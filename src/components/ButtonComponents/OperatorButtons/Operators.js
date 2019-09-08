@@ -9,7 +9,7 @@ const Operators = (props) => {
   // STEP 2 - add the imported data to state
   const [operatorData, setOperatorData] = useState(props.operators);
 
-  const operatorButtonArray = props.operators.map(op => <OperatorButton char = {op.char} func = {op.value} />);
+  const operatorButtonArray = props.operators.map(op => <OperatorButton char = {op.char} onClick = {props.onpress} />);
   console.log(operatorButtonArray);
   return (
     <div>
