@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "./App.css";
 import {numbers, operators, specials} from './data.js';
 import Logo from './components/DisplayComponents/Logo.js';
@@ -18,14 +18,26 @@ function App() {
   // Your functions should accept a parameter of the the item data being displayed to the DOM (ie - should recieve 5 if the user clicks on
   // the "5" button, or the operator if they click one of those buttons) and then call your setter function to update state.
   // Don't forget to pass the functions (and any additional data needed) to the components as props
+  const [currentValue, setCurrentValue] = useState(0);
+  const [currentDisplay, setDisplay] = useState('LambdaCalculator');
+  const [currentOperation, setOperation] = useState(false);
+
+  const registerNumberPress = (val) => {
+    if(currentOperation){
+      //placeholder
+      setDisplay(currentDisplay, currentOperation, val);
+    }else{
+      setDisplay(Number(val));
+    }
+  }
 
   return (
     <div className="container">
       <Logo />
       <div className="App">
-        <Display />
+        <Display currentDisplay = {currentDisplay} />
         <Specials specials = {specials} />
-        <Numbers numbers = {numbers} />
+        <Numbers numbers = {numbers} onpress = {registerNumberPress}/>
         <Operators operators = {operators} />
       </div>
     </div>

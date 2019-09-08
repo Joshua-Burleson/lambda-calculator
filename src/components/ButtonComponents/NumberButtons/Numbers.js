@@ -5,7 +5,7 @@ import NumberButton from './NumberButton.js';
 const Numbers = (props) => {
   // STEP 2 - add the imported data to state
   const [numbersState, setNumbersState] = useState(props.numbers);
-  const numberButtonArray = props.numbers.map(num => <NumberButton number = {num} />);
+  const numberButtonArray = props.numbers.map(num => <NumberButton number = {num} onClick = {props.onpress} />);
   return (
     <div>
       {/* STEP 3 - Use .map() to iterate over your array data and return a button
