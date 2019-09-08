@@ -22,12 +22,18 @@ function App() {
   const [currentDisplay, setDisplay] = useState(0);
   const [currentOperation, setOperation] = useState(false);
 
-  const registerNumberPress = (val) => {
+  const registerNormalPress = (val) => {
     if(currentOperation){
       //placeholder
       setDisplay(currentDisplay, currentOperation, val);
-    }else{
-      setDisplay(Number(val));
+    }
+    else if(operators.find(opVal => opVal.char === val.char) !== undefined){
+      setCurrentValue(currentDisplay);
+      setDisplay(val.char);
+      setOperation(val.value);
+    }
+    else{
+      setDisplay(Number(String(currentDisplay).concat(String(val))));
     }
   }
 
@@ -37,8 +43,8 @@ function App() {
       <div className="App">
         <Display currentDisplay = {currentDisplay} />
         <Specials specials = {specials} />
-        <Numbers numbers = {numbers} onpress = {registerNumberPress}/>
-        <Operators operators = {operators} />
+        <Numbers numbers = {numbers} onpress = {registerNormalPress}/>
+        <Operators operators = {operators} onpress = {registerNormalPress}/>
       </div>
     </div>
   );
