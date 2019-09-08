@@ -22,15 +22,28 @@ function App() {
   const [currentDisplay, setDisplay] = useState(0);
   const [currentOperation, setOperation] = useState(false);
 
+  const appMath = {
+    "+" : num => Number(currentValue) + Number(num),
+    "-" : num => Number(currentValue) - Number(num),
+    "*" : num => Number(currentValue) * Number(num),
+    "/" : num => Number(currentValue) / Number(num),
+    isOperator: val => operators.find(operator => val.char === operator.char) !== undefined
+  }
+
   const registerNormalPress = (val) => {
+    console.log(val)
     if(currentOperation){
+      console.log('!',appMath[currentOperation](val));
       //placeholder
-      setDisplay(currentDisplay, currentOperation, val);
+      setDisplay(val);
+      setOperation(false);
+      // setDisplay(appMath[currentOperation](Number(currentDisplay)));
     }
-    else if(operators.find(opVal => opVal.char === val.char) !== undefined){
-      setCurrentValue(currentDisplay);
-      setDisplay(val.char);
+    else if(appMath.isOperator(val)){
+      appMath.isOperator(currentDisplay) ? setCurrentValue(appMath[val.value](currentValue)) 
+                                         : setCurrentValue(currentDisplay);
       setOperation(val.value);
+      setDisplay(currentValue);
     }
     else{
       setDisplay(Number(String(currentDisplay).concat(String(val))));
