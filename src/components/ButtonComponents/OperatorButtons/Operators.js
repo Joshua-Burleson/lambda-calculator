@@ -12,7 +12,7 @@ const Operators = (props) => {
   const operatorButtonArray = props.operators.map(op => <OperatorButton char = {op.char} value = {op.value} onClick = {props.onpress} />);
 
   return (
-    <div>
+    <div className = "operators" >
        {operatorButtonArray}
     </div>
   );

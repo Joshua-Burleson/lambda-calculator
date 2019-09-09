@@ -20,35 +20,67 @@ function App() {
   // Don't forget to pass the functions (and any additional data needed) to the components as props
   const [runningMemory, updateMemory] = useState(0);
   const [currentDisplay, setDisplay] = useState(0);
-  const [currentOperation, setOperation] = useState(false);
 
-  //const isOperator = (key) => operators.map(oprtrObj =>  oprtrObj.value).includes(key.value);
+  const isOperator = (key) => operators.map(oprtrObj =>  oprtrObj.char).includes(key);
 
   const registerNumberPress = (key) => {
+    console.log(runningMemory)
     if(String(currentDisplay) === "0" && String(key) !== "."){
       updateMemory(String(key));
       return setDisplay(key);
+    };
+
+    if(isOperator(currentDisplay) || [...currentDisplay].includes("%")){
+      updateMemory(String(runningMemory).concat(key));
+      return setDisplay(key);
     }
+
     setDisplay(String(currentDisplay).concat(key));
     updateMemory(String(runningMemory).concat(key));
   }
 
   const registerOperatorPress = (key) => {
+
     const {char, value} = key;
     
     if(char === '='){
-      console.log(runningMemory);
+      console.log(`${runningMemory} = ${String(eval(runningMemory))}`);
       const currentTotal = String(eval(runningMemory));
       setDisplay(currentTotal);
       updateMemory(currentTotal);
-    }else{
+    }
+    
+    else{
       setDisplay(char);
       updateMemory(String(runningMemory).concat(value));
+      console.log(runningMemory)
     }
 
   }
 
 
+  const registerSpecialPress = (key) => {
+    switch(key){
+      case 'C':  
+      [setDisplay, updateMemory].forEach(setValue => setValue('0'));
+      break;
+
+      case '%': 
+      console.log(String(eval(runningMemory) * 0.1).concat('!'));
+      updateMemory(".".concat(String(eval(runningMemory)).concat('*')));
+      setDisplay(String(runningMemory).concat('%'));
+      break;
+
+      case '+/-': console.log('+/-', currentDisplay);
+      String(currentDisplay) !== '0' ? setDisplay(' -'.concat(currentDisplay)) : setDisplay(' -0.');
+      String(currentDisplay) !== '0' ? updateMemory(' -'.concat(currentDisplay)) : updateMemory(' -0.');
+      break
+
+      default: 
+      console.log('Something went wrong with special button press');
+      throw ReferenceError;
+    }
+  }
   
 
 
@@ -59,7 +91,7 @@ function App() {
       <Logo />
       <div className="App">
         <Display currentDisplay = {currentDisplay} />
-        <Specials specials = {specials} />
+        <Specials specials = {specials} onpress = {registerSpecialPress} />
         <Numbers numbers = {numbers} onpress = {registerNumberPress}/>
         <Operators operators = {operators} onpress = {registerOperatorPress}/>
       </div>

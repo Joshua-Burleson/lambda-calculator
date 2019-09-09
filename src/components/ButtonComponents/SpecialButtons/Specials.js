@@ -9,10 +9,10 @@ import SpecialButton from './SpecialButton.js';
 const Specials = (props) => {
   // STEP 2 - add the imported data to state
   const [specialState, setSpecialState] = useState(props.specials);
-  const specialsButtonsArray = props.specials.map(special => <SpecialButton symbol = {special} />);
+  const specialsButtonsArray = props.specials.map(special => <SpecialButton symbol = {special} onpress = {props.onpress} />);
 
   return (
-    <div>
+    <div className = "specials">
       {specialsButtonsArray}
     </div>
   );

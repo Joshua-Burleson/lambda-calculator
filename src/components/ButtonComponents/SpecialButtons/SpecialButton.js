@@ -2,7 +2,7 @@ import React from "react";
 
 const SpecialButton = (props) => {
   return (
-    <button onClick = {() => {console.log(props)}}>
+    <button onClick = {() => props.onpress(props.symbol)}>
       {props.symbol}
     </button>
   );
