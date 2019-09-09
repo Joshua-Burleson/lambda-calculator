@@ -27,28 +27,56 @@ function App() {
     "-" : num => Number(currentValue) - Number(num),
     "*" : num => Number(currentValue) * Number(num),
     "/" : num => Number(currentValue) / Number(num),
-    isOperator: val => operators.find(operator => val.char === operator.char) !== undefined
+    "=" : () => setDisplay(currentValue),
+    isOperator: val => operators.find(operator => val.value === operator.value) !== undefined,
+
   }
 
+
+
   const registerNormalPress = (val) => {
-    console.log(val)
-    if(currentOperation){
-      console.log('!',appMath[currentOperation](val));
-      //placeholder
-      setDisplay(val);
+    //If there is a current operation and the current key val is not an operator
+    //use the curent operation on the new value and the current value and set the currentValue to the result
+
+    if(currentOperation && !appMath.isOperator(val)){
+      setCurrentValue(appMath[currentOperation](val));
       setOperation(false);
-      // setDisplay(appMath[currentOperation](Number(currentDisplay)));
+      setDisplay(val);
     }
+
+    //Check if the current key val is an operator
     else if(appMath.isOperator(val)){
-      appMath.isOperator(currentDisplay) ? setCurrentValue(appMath[val.value](currentValue)) 
-                                         : setCurrentValue(currentDisplay);
-      setOperation(val.value);
-      setDisplay(currentValue);
+      //If equals, present current value
+      if(val.value === '='){
+        appMath[val.value]();
+        return;
+      }
+
+      //Check if the current display is an operator, if so use the operator on the current value and itself (i.e. 2+2)
+     { 
+      const testVal = {char: currentDisplay} 
+      console.log(currentDisplay, testVal, operators.find(operator => testVal.char === operator.value) !== undefined);
     }
+      appMath.isOperator({value: currentDisplay}) ? setCurrentValue(appMath[val.value](currentValue)) 
+                                                  : setCurrentValue(Number(currentDisplay)); //if not, set the current value to the display on the screen
+      setOperation(val.value); //set the currentOperation to the key val value
+      setDisplay(val.value); //display the operation
+        //Future release note to self: display new value if currentValue updated first case of ternary.
+    }
+
     else{
-      setDisplay(Number(String(currentDisplay).concat(String(val))));
+      //if there is no current operation and 
+      const newChar = String(currentDisplay).concat(String(val));
+      console.log(newChar, Number(newChar));
+  // Issues to resolve, do math with decimals < 1, handle presses of . with no pre-decimal digit in play
+      val === '.' ? setDisplay(String(currentDisplay).concat(String(val))) 
+                  : setDisplay(Number(String(currentDisplay).concat(String(val))));
     }
+
   }
+
+
+
 
   return (
     <div className="container">
@@ -61,6 +89,8 @@ function App() {
       </div>
     </div>
   );
+
+
 }
 
 export default App;
