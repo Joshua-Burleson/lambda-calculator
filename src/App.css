@@ -196,6 +196,10 @@ table {
 .container .button-wrapper .left-content .numbers button {
   background-color: #082567;
 }
+.container .button-wrapper .left-content .numbers .zero {
+    width: 110px;
+  }
+
 .container .button-wrapper .operators {
   margin: 0;
   padding: 0;
