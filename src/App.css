@@ -139,7 +139,7 @@ table {
   justify-content: flex-start;
   align-items: center;
   background-color: maroon;
-  height: 425px;
+  height: 430px;
   width: 300px;
   border-radius: 8px;
   box-sizing: border-box;
@@ -151,7 +151,7 @@ table {
   height: 55px;
   width: 55px;
   border-radius: 100px;
-  margin: 2px;
+  margin: 2px 2px 5px;
   background-color: blue;
   color: white;
   border: none;
@@ -181,14 +181,14 @@ table {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 3%;
+  margin-top: 5%;
 }
 .container .button-wrapper .left-content {
   margin-left: 2%;
   padding: 0;
 }
 .container .button-wrapper .left-content button {
-  margin-right: 5%;
+  margin-right: 7%;
 }
 .container .button-wrapper .left-content .specials button {
   background-color: #224C98;
@@ -197,7 +197,7 @@ table {
   background-color: #082567;
 }
 .container .button-wrapper .left-content .numbers .zero {
-    width: 110px;
+    width: 123px;
   }
 
 .container .button-wrapper .operators {
