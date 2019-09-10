@@ -1,0 +1,209 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+#root {
+  background-color: black;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: maroon;
+  height: 425px;
+  width: 300px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  padding: 5px;
+  border: 1.5px darkslategrey solid;
+}
+.container button {
+  font-size: 1.5rem;
+  height: 55px;
+  width: 55px;
+  border-radius: 100px;
+  margin: 2px;
+  background-color: blue;
+  color: white;
+  border: none;
+  box-shadow: 1px 1.5px 5px darkslategrey;
+}
+.container .logo-container {
+  align-self: flex-start;
+  margin: 6px 0 4px 8px;
+  padding: 5px;
+}
+.container .logo-container img {
+  height: 20px;
+}
+.container .display-box {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: darkslategrey;
+  margin: 0 5%;
+  padding: 0 2%;
+  height: 50px;
+  color: white;
+  border-radius: 60px;
+  font-size: 2rem;
+}
+.container .specials {
+  margin-top: -295px;
+  margin-left: 20px;
+  width: 80%;
+}
+.container .specials button {
+  background-color: #224C98;
+}
+.container .numbers {
+  width: 80%;
+  margin-left: 20px;
+}
+.container .numbers button {
+  background-color: #082567;
+}
+.container .numbers .zero {
+  height: 50px;
+  width: 118px;
+}
+.container .operators {
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  width: 10%;
+  margin-top: 15px;
+  margin-left: 73%;
+}
+.container .operators button {
+  background: #367588;
+}

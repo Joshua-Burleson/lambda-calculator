@@ -91,9 +91,9 @@ function App() {
       <Logo />
       <div className="App">
         <Display currentDisplay = {currentDisplay} />
+        <Operators operators = {operators} onpress = {registerOperatorPress}/>
         <Specials specials = {specials} onpress = {registerSpecialPress} />
         <Numbers numbers = {numbers} onpress = {registerNumberPress}/>
-        <Operators operators = {operators} onpress = {registerOperatorPress}/>
       </div>
     </div>
   );
