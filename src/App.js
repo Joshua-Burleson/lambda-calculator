@@ -22,6 +22,7 @@ function App() {
   const [currentDisplay, setDisplay] = useState(0);
 
   const isOperator = (key) => operators.map(oprtrObj =>  oprtrObj.char).includes(key);
+  
 
   const registerNumberPress = (key) => {
     console.log(runningMemory)
@@ -38,6 +39,7 @@ function App() {
     setDisplay(String(currentDisplay).concat(key));
     updateMemory(String(runningMemory).concat(key));
   }
+
 
   const registerOperatorPress = (key) => {
 
@@ -91,9 +93,13 @@ function App() {
       <Logo />
       <div className="App">
         <Display currentDisplay = {currentDisplay} />
-        <Operators operators = {operators} onpress = {registerOperatorPress}/>
-        <Specials specials = {specials} onpress = {registerSpecialPress} />
-        <Numbers numbers = {numbers} onpress = {registerNumberPress}/>
+        <div className="button-wrapper">
+          <div className = "left-content">
+            <Operators operators = {operators} onpress = {registerOperatorPress}/>
+            <Specials specials = {specials} onpress = {registerSpecialPress} />
+          </div>
+          <Numbers numbers = {numbers} onpress = {registerNumberPress}/>
+        </div>
       </div>
     </div>
   );

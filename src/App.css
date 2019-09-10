@@ -177,33 +177,31 @@ table {
   border-radius: 60px;
   font-size: 2rem;
 }
-.container .specials {
-  margin-top: -295px;
-  margin-left: 20px;
-  width: 80%;
+.container .button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3%;
 }
-.container .specials button {
+.container .button-wrapper .left-content {
+  margin-left: 2%;
+  padding: 0;
+}
+.container .button-wrapper .left-content button {
+  margin-right: 5%;
+}
+.container .button-wrapper .left-content .specials button {
   background-color: #224C98;
 }
-.container .numbers {
-  width: 80%;
-  margin-left: 20px;
-}
-.container .numbers button {
+.container .button-wrapper .left-content .numbers button {
   background-color: #082567;
 }
-.container .numbers .zero {
-  height: 50px;
-  width: 118px;
+.container .button-wrapper .operators {
+  margin: 0;
+  padding: 0;
+  width: 70%;
 }
-.container .operators {
-  align-self: flex-end;
-  display: flex;
-  flex-direction: column;
-  width: 10%;
-  margin-top: 15px;
-  margin-left: 73%;
-}
-.container .operators button {
+.container .button-wrapper .operators button {
+  margin-left: 2.5%;
   background: #367588;
 }
