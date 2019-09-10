@@ -95,10 +95,11 @@ function App() {
         <Display currentDisplay = {currentDisplay} />
         <div className="button-wrapper">
           <div className = "left-content">
-            <Operators operators = {operators} onpress = {registerOperatorPress}/>
             <Specials specials = {specials} onpress = {registerSpecialPress} />
+            <Numbers numbers = {numbers} onpress = {registerNumberPress}/>
           </div>
-          <Numbers numbers = {numbers} onpress = {registerNumberPress}/>
+          
+          <Operators operators = {operators} onpress = {registerOperatorPress}/>
         </div>
       </div>
     </div>
