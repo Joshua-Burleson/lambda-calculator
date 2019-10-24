@@ -74,8 +74,9 @@ function App() {
       break;
 
       case '+/-': console.log('+/-', currentDisplay);
+      if(isOperator(currentDisplay)) break;
       String(currentDisplay) !== '0' ? setDisplay(' -'.concat(currentDisplay)) : setDisplay(' -0.');
-      String(currentDisplay) !== '0' ? updateMemory(String(runningMemory).concat(' -'.concat(String(currentDisplay)))) : updateMemory ('-0.');
+      String(currentDisplay) !== '0' ? updateMemory(' -'.concat(String(currentDisplay))) : updateMemory ('-0.');
       break
 
       default: 
