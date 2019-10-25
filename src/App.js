@@ -20,6 +20,7 @@ function App() {
   // Don't forget to pass the functions (and any additional data needed) to the components as props
   const [runningMemory, updateMemory] = useState(0);
   const [currentDisplay, setDisplay] = useState(0);
+  const [positive, setPositivity] = useState(true);
 
   const isOperator = (key) => operators.map(oprtrObj =>  oprtrObj.char).includes(key);
   
@@ -50,6 +51,7 @@ function App() {
       const currentTotal = String(eval(runningMemory));
       setDisplay(currentTotal);
       updateMemory(currentTotal);
+      setPositivity(true);
     }
     
     else{
@@ -65,18 +67,29 @@ function App() {
     switch(key){
       case 'C':  
       [setDisplay, updateMemory].forEach(setValue => setValue('0'));
+      setPositivity(true);
       break;
 
       case '%': 
-      console.log(String(eval(runningMemory) * 0.1).concat('!'));
-      updateMemory(".".concat(String(eval(runningMemory)).concat('*')));
+      console.log(String(Math.abs(eval(runningMemory)) * 0.1).concat('!'));
+      updateMemory(".".concat(String(Math.abs(eval(runningMemory))).concat('*')));
       setDisplay(String(runningMemory).concat('%'));
+      setPositivity(true);
       break;
 
       case '+/-': console.log('+/-', currentDisplay);
       if(isOperator(currentDisplay)) break;
-      String(currentDisplay) !== '0' ? setDisplay(' -'.concat(currentDisplay)) : setDisplay(' -0.');
-      String(currentDisplay) !== '0' ? updateMemory(' -'.concat(String(currentDisplay))) : updateMemory ('-0.');
+      if(positive){
+        String(currentDisplay) !== '0' ? setDisplay(' -'.concat(currentDisplay)) : setDisplay(' -0.');
+        String(currentDisplay) !== '0' ? updateMemory(' -'.concat(String(currentDisplay))) : updateMemory ('-0.');
+        setPositivity(false);
+      }
+      else{
+        const absVal = Math.abs(currentDisplay);
+        setDisplay(absVal);
+        updateMemory(String(absVal));
+        setPositivity(true);
+      }
       break
 
       default: 
